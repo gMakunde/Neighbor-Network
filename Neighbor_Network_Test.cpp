@@ -44,8 +44,8 @@ int main() {
   } */
   if (SignOrSearch == "Search" || SignOrSearch == "search"){
     string dorm;
-  cout<< "Would You like to search in Harper Tubman, O'Connell Hall, Rawlings, Blount Towers, Thurgood Marshall Apartments, Marble Hall, Morgan View or Campus-wide?";
-  cin >> dorm;
+		cout<< "Would You like to search in Harper Tubman, O'Connell Hall, Rawlings, Blount Towers, Thurgood Marshall Apartments, Marble Hall, Morgan View or Campus-wide?";
+		cin >> dorm;
     dorm = standard_dorm_name(dorm);
   }
 
