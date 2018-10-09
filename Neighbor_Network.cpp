@@ -39,19 +39,22 @@ void sign_up(){
     string email;
     string phone_number;
     int number_of_items;
-    string items;
-    cout << "Enter Residence Hall: ";
-    cin >> residence_halls;
-
+    char item;
     cout << "Enter Name: ";
     cin >> name;
+
+    cout << "Enter Residence Hall: ";
+    cin >> residence_halls;
+    standard_dorm_name(residence_halls);
 
     cout << "Enter Email: ";
     cin >> email;
 
     cout << "Enter Number";
     cin >> phone_number;
-
+  
     cout << "Enter Item: ";
-    cin >> items;
+    cin >> item;
+
+
 }
