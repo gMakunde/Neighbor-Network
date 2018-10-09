@@ -38,23 +38,29 @@ void sign_up(){
     string residence_halls;
     string email;
     string phone_number;
+    string item;
     int number_of_items;
-    char item;
     cout << "Enter Name: ";
     cin >> name;
 
     cout << "Enter Residence Hall: ";
     cin >> residence_halls;
-    standard_dorm_name(residence_halls);
+    residence_halls = standard_dorm_name(residence_halls);
 
     cout << "Enter Email: ";
     cin >> email;
 
     cout << "Enter Number";
     cin >> phone_number;
-  
-    cout << "Enter Item: ";
-    cin >> item;
-
+   
+    cout << "How many items are you willing to give?";
+    cin >> number_of_items;
+    
+    string items[number_of_items];
+    for (int i; i<number_of_items; i++){
+      cout << "Enter Item: " << endl;
+      cin >> item;
+      items[i] = item;
+    }
 
 }
