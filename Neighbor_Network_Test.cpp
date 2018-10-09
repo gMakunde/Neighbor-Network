@@ -15,38 +15,44 @@ class Info {
 int main() {
   const int SIZE = 9;
   string res_halls[SIZE] = {"Baldwin Hall","Blount Towers", "Cummings House", "Harper-Tubman House", "Marble Hall Gardens Apartments", "O'Connell Hall", "Rawlings Hall", "Thurgood Marshall Apartments", "Morgan View"};
-  
+
   string SignOrSearch;
 	cout<<  "Hello, Welcome to the Neighbor Network! Would you like to Sign Up or Search for an item?";
 	cin >> SignOrSearch;
   Info user;
-    
-  /*if (SignorSearch == "sign up" || SignorSearch == "Sign Up" || SignorSearch == "Sign up" || SignorSearch == "sign Up"){
-      cout << "Enter Residence Hall: " << endl;
-      cin.ignore();
-      getline(cin, user.residence);
+  cout << "hi" << endl;
+  if (SignOrSearch == "sign up" || SignOrSearch == "Sign Up" || SignOrSearch == "Sign up" || SignOrSearch == "sign Up"){
+    cout << "hi2" << endl;
+    string name;
+    string residence_halls;
+    string email;
+    string phone_number;
+    int number_of_items;
+    string items;
+    cout << "Enter Residence Hall: ";
+    cin >> residence_halls;
 
-      cout << "Enter Name: ";
-      cin.ignore();
-      getline(cin, user.name);
+    cout << "Enter Name: ";
+    cin >> name;
 
-      cout << "Enter Email: ";
-      cin.ignore();
-      getline(cin, user.email);
+    cout << "Enter Email: ";
+    cin >> email;
 
-      cout << "Enter Number";
-      cin.ignore();
-      getline(cin, user.number);
+    cout << "Enter Number";
+    cin >> phone_number;
 
-      cout << "Enter Item: ";
-      cin.ignore();
-      getline(cin, user.item);
-  } */
-  if (SignOrSearch == "Search" || SignOrSearch == "search"){
+    cout << "Enter Item: ";
+    cin >> items;
+  } 
+  else if (SignOrSearch == "Search" || SignOrSearch == "search"){
     string dorm;
-		cout<< "Would You like to search in Harper Tubman, O'Connell Hall, Rawlings, Blount Towers, Thurgood Marshall Apartments, Marble Hall, Morgan View or Campus-wide?";
-		cin >> dorm;
+    cout<< "Enter The dorm you would like to search or enter Campus-wide";
+    cin >> dorm;
     dorm = standard_dorm_name(dorm);
+    string item;
+    cout << "enter the name of the item you are searching for";
+    cin >> item;
+
   }
 
 
