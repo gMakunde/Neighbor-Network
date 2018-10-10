@@ -14,7 +14,7 @@ string standard_dorm_name(string dorm){
   if (dorm == "oc" ||  dorm == "o'connell hall" || dorm == "oconnell hall" || dorm == "o'connell" || dorm == "o-connell" ){
     return "o'connell";
   }
-  if (dorm == "rawlings" || dorm == "rawlings hall" || dorm == "hall" || dorm == "rawlings-hall" || dorm == "rh"){
+  if (dorm == "rawlings" || dorm == "rawlings hall" || dorm == "rawlings-hall" || dorm == "rh"){
     return "rawlings";
   }
   if (dorm =="blount"|| dorm == "blount towers" || dorm == "towers" || dorm == "blount-towers" || dorm == "bt"){
@@ -23,7 +23,7 @@ string standard_dorm_name(string dorm){
   if (dorm == "thurgood marshall apartments" || dorm == "thurgood marshall" || dorm == "thurgood"  || dorm == "tmac" || dorm == "apartments" || dorm == "thurgood-marshall-apartments" || dorm == "tma"){
     return "thurgood";
   }
-  if (dorm == "marble hall" || dorm == "marble" || dorm == "hall" || dorm == "marble-hall" || dorm == "mh"){
+  if (dorm == "marble hall" || dorm == "marble" || dorm == "marble-hall" || dorm == "mh"){
     return "marble";
   }
   if (dorm == "morgan view"  || dorm == "mv" || dorm == "morgan" || dorm == "view" || dorm == "morgan-view"){
