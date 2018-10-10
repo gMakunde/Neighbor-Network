@@ -41,7 +41,7 @@ void sign_up(){
     string item;
     int number_of_items;
     cout << "Enter Name: ";
-    cin >> name;
+    getline(cin, name);
 
     cout << "Enter Residence Hall: ";
     cin >> residence_halls;
@@ -62,5 +62,12 @@ void sign_up(){
       cin >> item;
       items[i] = item;
     }
+    string name2 = name.append(".txt");
 
+    ofstream user_info;
+    user_info.open(name2.c_str());
+    user_info << name << ' ' << residence_halls << ' ' << email << ' ' << phone_number << ' ' << items << endl;
+    user_info.close();
+    
 }
+
