@@ -31,7 +31,7 @@ int main() {
     string item;
     cout << "enter the name of the item you are searching for ";
     getline(cin, item);
-    void search(dorm, item);
+    search(dorm, item);
 
   }
   if (SignOrSearch == "end"){
