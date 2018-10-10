@@ -19,6 +19,9 @@ int main() {
     if (yesOrno == "yes" || yesOrno == "y"){
       SignOrSearch = "search";
     }
+    if (yesOrno == "no" || yesOrno == "n"){
+      SignOrSearch = "end";
+    }
     else{
       SignOrSearch = "end";
     }
