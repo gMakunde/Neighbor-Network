@@ -1,9 +1,9 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <algorithm>
 using namespace std;
 #include "Neighbor_Network.h"
-
 
 string standard_dorm_name(string dorm){
   transform(dorm.begin(), dorm.end(), dorm.begin(), ::tolower);
@@ -19,6 +19,12 @@ string standard_dorm_name(string dorm){
   }
   if (dorm =="blount"|| dorm == "blount towers" || dorm == "towers" || dorm == "blount-towers" || dorm == "bt"){
     return "blount";
+  }
+  if (dorm =="baldwin"|| dorm == "baldwin hall" || dorm == "bh"){
+    return "baldwin";
+  }
+  if (dorm =="cummings"|| dorm == "cummings hall" || "cummings house" || dorm == "ch"){
+    return "cummings";
   }
   if (dorm == "thurgood marshall apartments" || dorm == "thurgood marshall" || dorm == "thurgood"  || dorm == "tmac" || dorm == "apartments" || dorm == "thurgood-marshall-apartments" || dorm == "tma"){
     return "thurgood";
@@ -38,32 +44,46 @@ string standard_dorm_name(string dorm){
 }
 
 void sign_up(){
-    string name;
-    string residence_halls;
-    string email;
-    string phone_number;
-    string item;
-    int number_of_items;
+    user u;
     cout << "Enter Name: ";
-    getline(cin, name);
+    getline(cin, u.name);
 
     cout << "Enter Residence Hall: ";
-    cin >> residence_halls;
-    residence_halls = standard_dorm_name(residence_halls);
+    getline(cin, u.residence);
+    u.residence = standard_dorm_name(u.residence);
 
     cout << "Enter Email: ";
-    cin >> email;
+    getline(cin, u.email);
 
     cout << "Enter Number";
-    cin >> phone_number;
-   
+    getline(cin, u.number);
+
     cout << "How many items are you willing to give?";
-    cin >> number_of_items;
-    
-    string items[number_of_items];
-    for (int i; i<number_of_items; i++){
-      cout << "Enter Item: " << endl;
-      cin >> item;
+    cin >> u.items_len;
+
+    string items[u.items_len];
+    string item;
+
+    for (int i=0; i<u.items_len; i++){
+      cout << "Enter Item " << i+1 << ": "<< endl;
+      cin >> ws;
+      getline(cin, item);
+      transform(item.begin(), item.end(), item.begin(), ::tolower);
       items[i] = item;
     }
+    string e = u.email;
+    string file = e.append(".txt");
+
+    ofstream user_info;
+    user_info.open(file.c_str());
+    user_info << u.name << ' ' << u.residence << ' ' << u.email << ' ' << u.number << ' ' << u.items_len << ' ' << endl;
+    for (int i=0; i<u.items_len; i++){
+      user_info << items[i] << ' ';
+    }
+    user_info.close();
     
+}
+
+void search(){
+
+}
