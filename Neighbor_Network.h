@@ -5,7 +5,7 @@ using namespace std;
 
 string standard_dorm_name(string);
 void sign_up();
-void search();
+void search(string, string);
 
 struct user {
   string residence;
