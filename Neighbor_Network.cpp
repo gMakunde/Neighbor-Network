@@ -1,31 +1,35 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 #include "Neighbor_Network.h"
 
+
 string standard_dorm_name(string dorm){
-  if (dorm == "Harper Tubman" || dorm == "Harper tubman" || dorm == "harper Tubman" || dorm == "harper Tubman" || dorm == "harper" || dorm == "tubman" || dorm == "Harper" || dorm == "Tubman"){
+  transform(dorm.begin(), dorm.end(), dorm.begin(), ::tolower);
+
+  if (dorm == "harper tubman" ||  dorm == "harper" || dorm == "tubman" || dorm == "harper-tubman" || dorm == "ht"){
       return "harper";
     }
-  if (dorm == "OC" || dorm == "oC" || dorm == "Oc" || dorm == "oc" || dorm == "O'Connell Hall" || dorm == "o'Connell Hall" || dorm == "O'connell Hall" || dorm == "O'Connell hall" || dorm == "o'connell Hall" || dorm == "o'connell hall" || dorm == "OConnell Hall" || dorm == "oConnell Hall" || dorm == "oconnell hall" || dorm == "Oconnell Hall" || dorm == "O'Connell" || dorm == "O'connell" || dorm == "o'connell" || dorm == "OConnell" || dorm == "Oconnell"){
+  if (dorm == "oc" ||  dorm == "o'connell hall" || dorm == "oconnell hall" || dorm == "o'connell" || dorm == "o-connell" ){
     return "o'connell";
   }
-  if (dorm == "Rawlings" || dorm == "rawlings" || dorm == "Rawlings Hall" || dorm == "rawlings Hall" || dorm == "Rawlings hall" || dorm == "rawlings hall"){
+  if (dorm == "rawlings" || dorm == "rawlings hall" || dorm == "hall" || dorm == "rawlings-hall" || dorm == "rh"){
     return "rawlings";
   }
-  if (dorm == "Blount" || dorm =="blount" || dorm == "Blount Towers" || dorm == "Blount towers" || dorm == "blount Towers" || dorm == "blount towers"){
+  if (dorm =="blount"|| dorm == "blount towers" || dorm == "towers" || dorm == "blount-towers" || dorm == "bt"){
     return "blount";
   }
-  if (dorm == "Thurgood Marshall Apartments" || dorm == "Thurgood marshall Apartments" || dorm == "Thurgood Marshall apartments" || dorm == "thurgood marshall Apartments" || dorm == "Thurgood marshall apartments" || dorm == "thurgood marshall apartments" || dorm == "thurgood Marshall apartments" || dorm == "Thurgood Marshall" || dorm == "Thurgood marshall" || dorm == "thurgood Marshall" || dorm == "thurgood marshall" || dorm == "Thurgood" || dorm == "thurgood" || dorm == "TMAC" || dorm == "Tmac" || dorm == "tmac" ){
+  if (dorm == "thurgood marshall apartments" || dorm == "thurgood marshall" || dorm == "thurgood"  || dorm == "tmac" || dorm == "apartments" || dorm == "thurgood-marshall-apartments" || dorm == "tma"){
     return "thurgood";
   }
-  if (dorm == "Marble Hall" || dorm == "marble Hall" || dorm == "Marble hall" || dorm == "marble hall" || dorm =="Marble" || dorm == "marble"){
+  if (dorm == "marble hall" || dorm == "marble" || dorm == "hall" || dorm == "marble-hall" || dorm == "mh"){
     return "marble";
   }
-  if (dorm == "Morgan View" || dorm == "morgan view" || dorm == "Morgan view" || dorm == "morgan View" || dorm == "mv" || dorm == "MV" || dorm == "Mv"|| dorm == "mV"){
+  if (dorm == "morgan view"  || dorm == "mv" || dorm == "morgan" || dorm == "view" || dorm == "morgan-view"){
     return "morgan view";
   }
-  if (dorm == "CW" || dorm == "cw" || dorm == "Cw" || dorm == "cW" || dorm == "Campus Wide" || dorm == "Campus-Wide" || dorm == "Campus wide" || dorm == "Campus-wide" || dorm == "campus Wide" || dorm == "campus-Wide" || dorm == "campus wide" || dorm == "campus-wide"){
+  if (dorm == "cw" || dorm == "campus wide" || dorm == "campus-wide" || dorm == "campus" || dorm == "wide" ){
     return "campus wide";
   }
   cout << "That is not a Valid dorm name please try again. ";
@@ -62,12 +66,4 @@ void sign_up(){
       cin >> item;
       items[i] = item;
     }
-    string name2 = name.append(".txt");
-
-    ofstream user_info;
-    user_info.open(name2.c_str());
-    user_info << name << ' ' << residence_halls << ' ' << email << ' ' << phone_number << ' ' << items << endl;
-    user_info.close();
     
-}
-
