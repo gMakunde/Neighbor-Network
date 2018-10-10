@@ -55,10 +55,10 @@ void sign_up(){
     cout << "Enter Email: ";
     getline(cin, u.email);
 
-    cout << "Enter Number";
+    cout << "Enter Number: ";
     getline(cin, u.number);
 
-    cout << "How many items are you willing to give?";
+    cout << "How many items are you willing to give? ";
     cin >> u.items_len;
 
     string items[u.items_len];
@@ -84,6 +84,6 @@ void sign_up(){
     
 }
 
-void search(){
+void search(string dorm, string item){
 
 }
