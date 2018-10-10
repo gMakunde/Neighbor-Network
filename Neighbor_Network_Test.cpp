@@ -12,8 +12,8 @@ int main() {
   if (SignOrSearch == "sign up"){
     sign_up();
     string yesOrno;
-    cout << "Thanks for signing up with the Neighbor Network!" << endl;
-    cout << "Would you like to search the Neighbor Network? (y/n) ";
+    cout << "Thanks for Signing up with the Neighbor Network!" << endl;
+    cout << "Would you Like to search the Neighbor Network? (y/n) ";
     cin >> yesOrno;
     transform(yesOrno.begin(), yesOrno.end(), yesOrno.begin(), ::tolower);
     if (yesOrno == "yes" || yesOrno == "y"){
@@ -25,20 +25,24 @@ int main() {
   } 
   if (SignOrSearch == "search"){
     string dorm;
-    cout<< "Enter The dorm you would like to search or enter Campus-Wide? ";
+    cout<< "Enter The dorm you would like to search or enter Campus-wide? ";
     cin >> dorm;
     dorm = standard_dorm_name(dorm);
     string item;
-    cout << "Enter the name of the item you are searching for ";
+    cout << "enter the name of the item you are searching for " << endl;
+    cin >> ws;
     getline(cin, item);
     search(dorm, item);
 
   }
   if (SignOrSearch == "end"){
-    cout << "Okay, have a great day!" << endl;
+    cout << "okay, have a great day!" << endl;
   }
-  else{
-    cout << "Sorry that is not a valid choice :/. Please try again" << endl;
+  if (SignOrSearch != "end" || SignOrSearch != "search" || SignOrSearch != "sign up"){
+    SignOrSearch = "wrong";
+  }
+  else if (SignOrSearch == "wrong"){
+    cout << "Sorry that is not a valid choice :/. Please Try again" << endl;
     main();
   }
 
@@ -46,3 +50,4 @@ int main() {
 
 return 0;
 }
+
