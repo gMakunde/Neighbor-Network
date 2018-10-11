@@ -32,6 +32,7 @@ int main() {
     cout << "Enter the name of the item you are searching for " << endl;
     cin >> ws;
     getline(cin, item);
+    transform(item.begin(), item.end(), item.begin(), ::tolower);
     search(dorm, item);
 
   }
