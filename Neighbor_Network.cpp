@@ -16,7 +16,7 @@ string standard_dorm_name(string dorm) {
 		return "Harper-Tubman House";
 	}
 	else if (dorm == "oc" || dorm == "o'connell hall" || dorm == "oconnell hall" || dorm == "o'connell" || dorm == "o-connell") {
-		return "O'connell Hall";
+		return "O'Connell Hall";
 	}
 	else if (dorm == "rawlings" || dorm == "rawlings hall" || dorm == "rawlings-hall" || dorm == "rh") {
 		return "Rawlings Hall";
