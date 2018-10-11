@@ -5,5 +5,6 @@ This Program MUST be run on a terminal or compiler. This will not work on repl.i
 when you run this program on your terminal you will need an extra flag called "-lstdc++fs"
 example:
 g++ Neighbor_Network_test.cpp Neighbor_Network.cpp -o neighbor_network -lstdc++fs
+This is a windows application, not compatible with mac, never tested on linux
 
 
