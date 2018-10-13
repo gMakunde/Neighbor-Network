@@ -3,10 +3,9 @@
 #include <string>
 #include <algorithm>
 #include <vector>
-#include <windows.h>
-using namespace std;
-#include <experimental/filesystem>
 #include "Neighbor_Network.h"
+using namespace std;
+
 // Creates a standard dorm name to make help make search more accurate
 string standard_dorm_name(string dorm) {
 	//makes everything lowercase to keep standard
@@ -43,7 +42,8 @@ string standard_dorm_name(string dorm) {
 		return "campus wide";
 	}
 	cout << "That is not a Valid dorm name please try again. ";
-	cin >> dorm;
+	cin >> ws;
+	getline(cin, dorm);
 	return standard_dorm_name(dorm);
 }
 //function used where users will sign up
@@ -81,7 +81,7 @@ void sign_up() {
 
 	u.items = "";
 	for (int i = 0; i < u.items_len; i++) {
-		u.items += items[i];
+		u.items = u.items + items[i] + ' ';
 	}
 	// writing user info into a text file that will be saved in this directory
 	ofstream user_info;
@@ -89,23 +89,43 @@ void sign_up() {
 	user_info << u.residence << endl << u.items << endl << u.name << endl << u.number << endl << u.email << endl;
 	user_info.close();
 
+
+	vector <string> previous_files;
+	string line;
+	// opening a master .txt file that stores all filenames
+	ifstream master1;
+	string master_f = "master.txt";
+	master1.open(master_f.c_str());
+	if (master1.is_open()){
+		while (getline(master1, line)){
+			// if text exsits in this file push every filename into a vector
+			previous_files.push_back(line);
+		}
+		master1.close();
+	}
+	// write new filename to the masterfile
+	ofstream master2;
+	master2.open(master_f.c_str());
+	for (int i = 0; i < previous_files.size(); i++) {
+		// push all previous filenames in the text document back into the text file
+		master2 << previous_files[i] << endl;
+	}
+	// add new filename to the master file
+	master2 << file << endl;
+	master2.close();
 }
-// function used to get the path of the current directory
-string ExePath() {
-	char buffer[MAX_PATH];
-	GetModuleFileName(NULL, buffer, MAX_PATH);
-	string::size_type pos = string(buffer).find_last_of("\\/");
-	return string(buffer).substr(0, pos);
-}
+
 // function used to convert "directory_entry " value type to std::string value type
 void GetFilenames(vector<string> &FileNames) {
-	experimental::filesystem::path directory(ExePath());
-	experimental::filesystem::directory_iterator iter(directory), end;
-
-	for (; iter != end; ++iter) {
-		if (iter->path().extension() == ".txt") {
-			FileNames.push_back(iter->path().filename().string());
+	string line;
+	string master_f1 = "master.txt";
+	ifstream master3;
+	master3.open(master_f1.c_str());
+	if (master3.is_open()) {
+		while (getline(master3, line)) {
+			FileNames.push_back(line);
 		}
+		master3.close();
 	}
 }
 void search(string dorm, string item) {
@@ -149,6 +169,7 @@ void search(string dorm, string item) {
 		}
 	}
 	int size = matches.size();
+	int msize = size / 4;
   if (size > 0){
 		// Size of vector should be a multiple of four
 		int i1 = 0;
@@ -156,7 +177,13 @@ void search(string dorm, string item) {
 		int i3 = 2;
 		int i4 = 3;
 		int z = 1;
-		cout << "We found you " << size / 4 << " matches!" << endl;
+		if (msize == 1) {
+			cout << "We found you " << msize << " match!" << endl;
+		}
+		else {
+			cout << "We found you " << msize << " matches!" << endl;
+		}
+		
 		// while size is greater than 0 cout matches to the screen
 		while (size > 0) {
 			cout << "Match " << z << ": " << endl;
@@ -175,5 +202,25 @@ void search(string dorm, string item) {
 	else {
 		cout << "Sorry we could not find a match :(" << endl;
 	}
-	cout << "Thanks for using the Neighbor Network!" << endl;
+	string search_again;
+	cout << "Would you like to search for another item?(y/n)";
+	cin >> ws;
+	getline(cin, search_again);
+	transform(search_again.begin(), search_again.end(), search_again.begin(), ::tolower);
+	if (search_again == "y" || search_again == "yes") {
+		string dorm;
+		cout << "Enter the dorm you would like to search or enter Campus-wide? ";
+		cin >> ws;
+		getline(cin, dorm);
+		dorm = standard_dorm_name(dorm);
+		string item;
+		cout << "Enter the name of the item you are searching for " << endl;
+		cin >> ws;
+		getline(cin, item);
+		transform(item.begin(), item.end(), item.begin(), ::tolower);
+		search(dorm, item);
+	}
+	else {
+		cout << "Thanks for using the Neighbor Network!" << endl;
+	}
 }
