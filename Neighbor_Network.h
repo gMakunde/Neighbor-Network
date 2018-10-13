@@ -7,7 +7,6 @@ using namespace std;
 string standard_dorm_name(string);
 void sign_up();
 void search(string, string);
-string ExePath();
 void GetFilenames(vector<string>&);
 
 struct user {
